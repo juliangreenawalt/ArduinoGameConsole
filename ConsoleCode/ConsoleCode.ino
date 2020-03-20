@@ -10,6 +10,11 @@ UTFT myGLCD(ILI9341_16, 38, 39, 40, 41);
 extern uint8_t SmallFont[];
 extern uint8_t BigFont[];
 extern uint8_t SevenSegNumFont[];
+extern uint8_t arial_normal[];
+extern uint8_t arial_bold[];
+extern uint8_t TRONFont[];
+extern uint8_t Retro8x16[];
+extern uint8_t battery_24x48[];
 
 //Joystick Variables
 const int joyPinX = A0;
