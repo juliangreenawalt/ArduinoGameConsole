@@ -4,7 +4,10 @@
 #include <EEPROM.h>
 
 //Sets up display
-UTFT myGLCD(ILI9341_16, 38, 39, 40, 41);
+UTFT myGLCD(ILI9341_16,38,39,40,41); 
+
+//Set up touch screen
+URTouch myTouch(6, 5, 4, 3, 2);
 
 //Defining Fonts
 extern uint8_t SmallFont[];
@@ -15,6 +18,9 @@ extern uint8_t arial_bold[];
 extern uint8_t TRONFont[];
 extern uint8_t Retro8x16[];
 extern uint8_t battery_24x48[];
+
+//Press coordinates
+int pressX, pressY = 0;
 
 //Joystick Variables
 const int joyPinX = A0;
@@ -39,6 +45,10 @@ void setup() {
   //Initializes Display
   myGLCD.InitLCD();
 
+  //Initializes touch screen
+  myTouch.InitTouch();
+  myTouch.setPrecision(PREC_MEDIUM);
+
   //Sets up pins
   pinMode(joyPinX, INPUT);
   pinMode(joyPinY, INPUT);
@@ -58,7 +68,7 @@ void loop() {
 
 void readInputs(){
   //Divider to make serial monitor easier to read
-  Serial.println("------------------------------------------");
+  //Serial.println("------------------------------------------");
   
   //Read Joystick
   joyValX = analogRead(joyPinX);
@@ -73,6 +83,13 @@ void readInputs(){
   buttonState_HOME = digitalRead(button_HOME);
   buttonState_MENU = digitalRead(button_MENU);
 
+  //Read Touch
+  if(myTouch.dataAvailable()){
+    myTouch.read();
+    pressX = myTouch.getX();
+    pressY = myTouch.getY();
+  }
+  /*
   //Print inputs to serial monitor
   Serial.print("Joystick X: ");
   Serial.println(joyValX);
@@ -87,4 +104,12 @@ void readInputs(){
   Serial.println(buttonState_HOME);
   Serial.print("MENU Button: ");
   Serial.println(buttonState_MENU);
+
+  Serial.print("Touch: ");
+  Serial.print("(");
+  Serial.print(pressX);
+  Serial.print(", ");
+  Serial.print(pressY);
+  Serial.println(")");
+  */
 }
