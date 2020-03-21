@@ -2,12 +2,20 @@
 #include <UTFT.h> 
 #include <URTouch.h>
 #include <EEPROM.h>
+#include <DFRobotDFPlayerMini.h>
+#include <SoftwareSerial.h>
 
 //Sets up display
 UTFT myGLCD(ILI9341_16,38,39,40,41); 
 
 //Set up touch screen
 URTouch myTouch(6, 5, 4, 3, 2);
+
+//Set up audio 
+static const uint8_t PIN_MP3_RX = 13;
+static const uint8_t PIN_MP3_TX = 12;
+SoftwareSerial softwareSerial(PIN_MP3_RX, PIN_MP3_TX);
+DFRobotDFPlayerMini player;
 
 //Defining Fonts
 extern uint8_t SmallFont[];
@@ -45,6 +53,16 @@ void setup() {
   //Initializes Display
   myGLCD.InitLCD();
 
+  //Initializes audio player
+  softwareSerial.begin(9600);
+  if(player.begin(softwareSerial)){
+    Serial.println("Audio Setup Successful");
+  } else {
+    Serial.println("Audio Setup Failed");
+  }
+  player.volume(30);
+  player.play(1); //Test_Audio
+  
   //Initializes touch screen
   myTouch.InitTouch();
   myTouch.setPrecision(PREC_MEDIUM);
@@ -67,9 +85,6 @@ void loop() {
 }
 
 void readInputs(){
-  //Divider to make serial monitor easier to read
-  //Serial.println("------------------------------------------");
-  
   //Read Joystick
   joyValX = analogRead(joyPinX);
   joyValY = analogRead(joyPinY);
@@ -89,27 +104,4 @@ void readInputs(){
     pressX = myTouch.getX();
     pressY = myTouch.getY();
   }
-  /*
-  //Print inputs to serial monitor
-  Serial.print("Joystick X: ");
-  Serial.println(joyValX);
-  Serial.print("Joystick Y: ");
-  Serial.println(joyValY);
-
-  Serial.print("A Button: ");
-  Serial.println(buttonState_A);
-  Serial.print("B Button: ");
-  Serial.println(buttonState_B);
-  Serial.print("HOME Button: ");
-  Serial.println(buttonState_HOME);
-  Serial.print("MENU Button: ");
-  Serial.println(buttonState_MENU);
-
-  Serial.print("Touch: ");
-  Serial.print("(");
-  Serial.print(pressX);
-  Serial.print(", ");
-  Serial.print(pressY);
-  Serial.println(")");
-  */
 }

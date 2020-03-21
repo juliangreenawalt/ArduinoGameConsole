@@ -1,0 +1,5 @@
+Here is a helpful guide for setting up the mp3 player:
+https://circuitjournal.com/how-to-use-the-dfplayer-mini-mp3-module-with-an-arduino
+
+IMPORTANT:
+To avoid losing track of which file is which number, as soon as you add an audio file to your microSD, rename it "001_Name" or something of the sort.
