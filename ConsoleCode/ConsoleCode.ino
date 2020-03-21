@@ -60,8 +60,9 @@ void setup() {
   } else {
     Serial.println("Audio Setup Failed");
   }
+
+  //TEMPORARY - Sets volume to max
   player.volume(30);
-  player.play(1); //Test_Audio
   
   //Initializes touch screen
   myTouch.InitTouch();
