@@ -73,6 +73,8 @@ void initInputTest(){
   myGLCD.print("PRESS", 210, 210);
   myGLCD.setColor(255, 255, 255); //WHITE
   myGLCD.drawRect(190, 170, 270, 238);
+  myGLCD.setColor(255, 0, 255); //PURPLE
+  myGLCD.drawRect(250, 176, 263, 195);
 }
 
 void updateInputTest(){
@@ -97,7 +99,7 @@ void updateInputTest(){
   myGLCD.print(String(buttonState_MENU), 255, 140);
 
   //TOUCH SCREEN:
-  if(myTouch.dataAvailable()){
+  if(screenPressed){
     myGLCD.setColor(0, 255, 0); //GREEN
     myGLCD.fillCircle(97, 230, 5);
     //Erase previous value
@@ -112,10 +114,7 @@ void updateInputTest(){
   myGLCD.print("(" + String(pressX) + ", " + String(pressY) + ")", 60, 205);
 
   //AUDIO:
-  if(myTouch.dataAvailable()){
-    myTouch.read();
-    pressX = myTouch.getX();
-    pressY = myTouch.getY();
+  if(screenPressed){
     if((pressX >= 200) && (pressX <= 260) && (pressY >= 200) && (pressY <= 260)){
       myGLCD.setColor(255, 255, 0); //YELLOW
       myGLCD.drawRect(200, 200, 260, 230);
@@ -124,5 +123,15 @@ void updateInputTest(){
   } else {
     myGLCD.setColor(255, 255, 255); //WHITE
     myGLCD.drawRect(200, 200, 260, 230);
+  }
+  //Updates volume level bar
+  for(int i = 0; i < 15; i++){
+    if(i < vol /  2){
+      myGLCD.setColor(255, 182, 193); //PINK
+      myGLCD.drawLine(252, 193 - i, 261, 193 - i);
+    } else {
+      myGLCD.setColor(0, 0, 0); //BLACK
+      myGLCD.drawLine(252, 193 - i, 261, 193 - i);
+    }
   }
 }

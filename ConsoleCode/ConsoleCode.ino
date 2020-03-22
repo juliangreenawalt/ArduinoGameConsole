@@ -27,8 +27,9 @@ extern uint8_t TRONFont[];
 extern uint8_t Retro8x16[];
 extern uint8_t battery_24x48[];
 
-//Press coordinates
+//Touch Screen
 int pressX, pressY = 0;
+bool screenPressed = false;
 
 //Joystick Variables
 const int joyPinX = A0;
@@ -110,6 +111,9 @@ void readInputs(){
     myTouch.read();
     pressX = myTouch.getX();
     pressY = myTouch.getY();
+    screenPressed = true;
+  } else {
+    screenPressed = false;
   }
 
   //Read Volume Knob
