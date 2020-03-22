@@ -46,6 +46,12 @@ int buttonState_B = 0;
 int buttonState_HOME = 0;
 int buttonState_MENU = 0;
 
+//Volume Knob Variables
+const int knobPin = A2;
+int knobVal = 0;
+int oldKnobVal = 0;
+int vol = 0;
+
 void setup() {
   //Starts serial monitor
   Serial.begin(9600);
@@ -105,4 +111,12 @@ void readInputs(){
     pressX = myTouch.getX();
     pressY = myTouch.getY();
   }
+
+  //Read Volume Knob
+  knobVal = analogRead(knobPin);
+  vol = knobVal / 33; //Number between 0 and 30
+  if(vol != oldKnobVal / 33){ //This prevents unnecesary static with some speakers. Only sets volume when it changes.
+    player.volume(vol);
+  }
+  oldKnobVal = knobVal;
 }
