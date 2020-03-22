@@ -99,7 +99,7 @@ void updateInputTest(){
   myGLCD.print(String(buttonState_MENU), 255, 140);
 
   //TOUCH SCREEN:
-  if(myTouch.dataAvailable()){
+  if(screenPressed){
     myGLCD.setColor(0, 255, 0); //GREEN
     myGLCD.fillCircle(97, 230, 5);
     //Erase previous value
@@ -114,10 +114,7 @@ void updateInputTest(){
   myGLCD.print("(" + String(pressX) + ", " + String(pressY) + ")", 60, 205);
 
   //AUDIO:
-  if(myTouch.dataAvailable()){
-    myTouch.read();
-    pressX = myTouch.getX();
-    pressY = myTouch.getY();
+  if(screenPressed){
     if((pressX >= 200) && (pressX <= 260) && (pressY >= 200) && (pressY <= 260)){
       myGLCD.setColor(255, 255, 0); //YELLOW
       myGLCD.drawRect(200, 200, 260, 230);
