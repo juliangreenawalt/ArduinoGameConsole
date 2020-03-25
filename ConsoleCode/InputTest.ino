@@ -14,11 +14,6 @@ void playInputTest(){
 
 //Draws initial screen
 void initInputTest(){
-  
-  Serial.println("-------------------------");
-  Serial.println("Welcome to the input test");
-  Serial.println("-------------------------");
-
   //Clears anything on the screen
   myGLCD.clrScr();
 

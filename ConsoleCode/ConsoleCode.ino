@@ -36,6 +36,7 @@ const int joyPinX = A0;
 const int joyPinY = A1;
 int joyValX = -1;
 int joyValY = -1;
+int deadZone = 0;
 
 //Button Variables
 const int button_A = 8;
@@ -84,7 +85,8 @@ void setup() {
   pinMode(button_MENU, INPUT);
 
   //TEMPORARY - launches Input Test
-  playInputTest();
+  //playInputTest();
+  launchHomeScreen();
 }
 
 void loop() {
@@ -97,8 +99,8 @@ void readInputs(){
   joyValX = analogRead(joyPinX);
   joyValY = analogRead(joyPinY);
   //Converts to a number between -10 and 10
-  //joyValX = joyValX / (joyValX / 20) * -1 + 10;
-  //joyValY = joyValY - 10;
+  joyValX = joyValX / 50 - 10;
+  joyValY = -1 * joyValY / 50 + 10;
   
   //Read Buttons
   buttonState_A = digitalRead(button_A);
@@ -123,4 +125,10 @@ void readInputs(){
     player.volume(vol);
   }
   oldKnobVal = knobVal;
+
+  //Returns to Home Screen when HOME button is pressed
+  if(buttonState_HOME == 1){
+    launchHomeScreen();
+    delay(1000);
+  }
 }

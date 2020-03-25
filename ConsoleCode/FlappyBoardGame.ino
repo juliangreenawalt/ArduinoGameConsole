@@ -6,7 +6,7 @@ void playFlappyBoard(){
   initFlappyBoard();
   
   while(playing){
-    //Anything in here happens every frame
+    readInputs();
   }
 }
 

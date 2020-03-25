@@ -6,7 +6,7 @@ void playPing(){
   initPing();
   
   while(playing){
-    //Anything in here happens every frame
+    readInputs();
   }
 }
 
