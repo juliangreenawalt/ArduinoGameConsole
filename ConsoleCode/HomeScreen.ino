@@ -96,12 +96,12 @@ void updateHomeScreen(){
   if(joyValX == 10 && HS_colSelect < 2){
     HS_colSelect += 1;
     changeSelection();
-    delay(200);
+    delay(250);
   }
   if(joyValX == -10 && HS_colSelect > 0){
     HS_colSelect -= 1;
     changeSelection();
-    delay(200);
+    delay(250);
   }
 
   //On press of button A, corresponding app is launched

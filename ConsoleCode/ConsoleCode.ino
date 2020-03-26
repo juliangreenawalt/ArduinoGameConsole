@@ -84,8 +84,7 @@ void setup() {
   pinMode(button_HOME, INPUT);
   pinMode(button_START, INPUT);
 
-  playPing();
-  //launchHomeScreen();
+  launchHomeScreen();
 }
 
 void loop() {

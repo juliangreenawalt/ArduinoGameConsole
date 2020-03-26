@@ -23,7 +23,7 @@ void playPing(){
   ping_ballSpeedX = 2 * pow(-1, random(1, 3)); //Randomizes staring X direction.
   ping_ballSpeedY = 2; //Positive Y means its falling
   ping_score = 0;
-  //ping_hiscore = EEPROM.read(0);
+  ping_hiscore = EEPROM.read(0);
   
   initPing();
 
@@ -51,7 +51,7 @@ void playPing(){
 
 void initPing(){
   myGLCD.clrScr();
-
+  
   //Title
   myGLCD.setColor(0, 0, 0); //BLACK
   myGLCD.setBackColor(255, 255, 255); //WHITE
@@ -153,9 +153,30 @@ void ping_moveBall(){
 }
 
 void ping_endGame(){
+  myGLCD.clrScr();
+  myGLCD.setBackColor(0, 0, 0); //BLACK
+  myGLCD.setColor(255, 255, 255); //WHITE
   if(ping_score > ping_hiscore){
-    //EEPROM.write(ping_score, 0);
+    EEPROM.write(0, ping_score); //Saves high score
+    myGLCD.setFont(BigFont);
+    myGLCD.print("New Hi-score!", CENTER, 50);
+  } else {
+    myGLCD.setFont(BigFont);
+    myGLCD.print("Score", CENTER, 50);
   }
-  delay(3000);
+  myGLCD.setFont(SevenSegNumFont);
+  myGLCD.print(String(ping_score), CENTER, 100);
+
+  //Countdown
+  delay(2000);
+  myGLCD.setFont(Retro8x16);
+  myGLCD.print("Restarting in: 3", CENTER, 200);
+  delay(1000);
+  myGLCD.print("Restarting in: 2", CENTER, 200);
+  delay(1000);
+  myGLCD.print("Restarting in: 1", CENTER, 200);
+  delay(1000);
+  myGLCD.print("Restarting in: 0", CENTER, 200);
+  delay(1000);
   playPing();
 }
