@@ -14,6 +14,19 @@ int ping_hiscore; //Stored in EEPROM @ 0
 void playPing(){
   bool playing = true;
   start = false;
+
+  player.play(1);
+  delay(2000);
+  player.play(5);
+  delay(2000);
+  player.play(6);
+  delay(2000);
+  player.play(7);
+  delay(2000);
+  //player.play(8);
+  //delay(2000);
+  player.play(10);
+  delay(2000);
   
   //Reset variables
   ping_playerX = 145;
@@ -128,17 +141,21 @@ void ping_moveBall(){
   //Check for colisions (5 is radius)
   if(ping_ballX - 5 + ping_ballSpeedX < 4){ //If it collides with left wall
     ping_ballSpeedX *= -1;
+    player.play(2); //ping_hitWall
   }
   if(ping_ballX + 5 + ping_ballSpeedX > 315){ //If it collides with right wall
     ping_ballSpeedX *= -1;
+    player.play(2); //ping_hitWall
   }
   if(ping_ballY - 5 + ping_ballSpeedY < 38){ //If it collides with top wall
     ping_ballSpeedY *= -1;
+    player.play(2); //ping_hitWall
   }
   if(ping_ballY + 5 + ping_ballSpeedY > 190 && ping_ballY + 5 + ping_ballSpeedY < 198){ //If it collides with paddle
     if(ping_ballX - 1 >= ping_playerX && ping_ballX + 1 <= ping_playerX + 40){
       ping_ballSpeedY *= -1;
       ping_score += 1;
+      player.play(3); //ping_hitPaddle
 
       //Show new score
       myGLCD.setColor(255, 255, 255); //WHITE
@@ -148,6 +165,7 @@ void ping_moveBall(){
     }
   }
   if(ping_ballY > 239){ //If it falls through the bottom
+    player.play(4); //ping_lose
     ping_endGame();
   }
 }
