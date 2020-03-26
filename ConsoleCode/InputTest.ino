@@ -41,7 +41,7 @@ void initInputTest(){
   myGLCD.print("A =", 200, 80);
   myGLCD.print("B =", 200, 100);
   myGLCD.print("HOME =", 200, 120);
-  myGLCD.print("MENU =", 200, 140);
+  myGLCD.print("START =", 200, 140);
   myGLCD.drawRect(190, 40, 270, 157);
 
   //Touch screen section
@@ -91,7 +91,7 @@ void updateInputTest(){
   myGLCD.print(String(buttonState_A), 230, 80);
   myGLCD.print(String(buttonState_B), 230, 100);
   myGLCD.print(String(buttonState_HOME), 255, 120);
-  myGLCD.print(String(buttonState_MENU), 255, 140);
+  myGLCD.print(String(buttonState_START), 260, 140);
 
   //TOUCH SCREEN:
   if(screenPressed){

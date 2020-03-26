@@ -42,17 +42,20 @@ int deadZone = 0;
 const int button_A = 8;
 const int button_B = 9;
 const int button_HOME = 10;
-const int button_MENU = 11;
+const int button_START = 11;
 int buttonState_A = 0;
 int buttonState_B = 0;
 int buttonState_HOME = 0;
-int buttonState_MENU = 0;
+int buttonState_START = 0;
 
 //Volume Knob Variables
 const int knobPin = A2;
 int knobVal = 0;
 int oldKnobVal = 0;
 int vol = 0;
+
+//General Variable
+bool start = false;
 
 void setup() {
   //Starts serial monitor
@@ -68,9 +71,6 @@ void setup() {
   } else {
     Serial.println("Audio Setup Failed");
   }
-
-  //TEMPORARY - Sets volume to max
-  player.volume(30);
   
   //Initializes touch screen
   myTouch.InitTouch();
@@ -82,11 +82,10 @@ void setup() {
   pinMode(button_A, INPUT);
   pinMode(button_B, INPUT);
   pinMode(button_HOME, INPUT);
-  pinMode(button_MENU, INPUT);
+  pinMode(button_START, INPUT);
 
-  //TEMPORARY - launches Input Test
-  //playInputTest();
-  launchHomeScreen();
+  playPing();
+  //launchHomeScreen();
 }
 
 void loop() {
@@ -106,7 +105,7 @@ void readInputs(){
   buttonState_A = digitalRead(button_A);
   buttonState_B = digitalRead(button_B);
   buttonState_HOME = digitalRead(button_HOME);
-  buttonState_MENU = digitalRead(button_MENU);
+  buttonState_START = digitalRead(button_START);
 
   //Read Touch
   if(myTouch.dataAvailable()){
@@ -130,5 +129,9 @@ void readInputs(){
   if(buttonState_HOME == 1){
     launchHomeScreen();
     delay(1000);
+  }
+
+  if(buttonState_START == 1){
+    start = true;
   }
 }
