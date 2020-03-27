@@ -110,7 +110,7 @@ void updateHomeScreen(){
       playPing();
     }
     if(HS_colSelect == 1){
-      playPing();
+      launchADPaint();
     }
     if(HS_colSelect == 2){
       playInputTest();

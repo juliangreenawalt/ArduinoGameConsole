@@ -14,19 +14,6 @@ int ping_hiscore; //Stored in EEPROM @ 0
 void playPing(){
   bool playing = true;
   start = false;
-
-  player.play(1);
-  delay(2000);
-  player.play(5);
-  delay(2000);
-  player.play(6);
-  delay(2000);
-  player.play(7);
-  delay(2000);
-  //player.play(8);
-  //delay(2000);
-  player.play(10);
-  delay(2000);
   
   //Reset variables
   ping_playerX = 145;
