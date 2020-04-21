@@ -3,3 +3,51 @@ https://circuitjournal.com/how-to-use-the-dfplayer-mini-mp3-module-with-an-ardui
 
 IMPORTANT:
 To avoid losing track of which file is which number, as soon as you add an audio file to your microSD, rename it "001_Name" or something of the sort.
+
+
+
+
+
+HOW TO SET UP:
+
+Code:
+1.) Download DFRobotDFPlayerMini.h library
+2.) Include DFRobotDFPlayerMini.h and SoftwareSerial.h libraries
+3.) Copy this and paste in sketch:
+
+	static const uint8_t PIN_MP3_RX = 13;
+	static const uint8_t PIN_MP3_TX = 12;
+	SoftwareSerial softwareSerial(PIN_MP3_RX, PIN_MP3_TX);
+	DFRobotDFPlayerMini player;
+
+4.) Copy this and paste it in setup:
+	
+	softwareSerial.begin(9600);
+  	if(player.begin(softwareSerial)){
+    		Serial.println("Audio Setup Successful");
+  	} else {
+    		Serial.println("Audio Setup Failed");
+  	}
+
+*Make sure serial monitor is initialized at a baud rate of 9600
+
+
+Hardware:
+1.) Solder leads onto speaker
+2.) Connect Tx pin on mp3 module to pin 12 through a 1k ohm resistor
+3.) Connect Rx pin on mp3 module to pin 13
+4.) Connect module to ground and 5v
+5.) Connect leads on speaker to spk1 and spk2 on mp3 module. Order does not matter.
+
+
+
+USAGE:
+1.) Add mp3 files from your computer onto a microSD card
+2.) Insert microSD card into slot on mp3 module
+3.) Set volume of speaker: 	*volume = number from 0 - 30
+
+	player.volume(volume);
+
+4.) Play mp3 file through speaker:	*file_number = index of mp3 file you want to play
+	
+	player.play(file_number);
