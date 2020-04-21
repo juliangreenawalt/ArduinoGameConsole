@@ -54,6 +54,7 @@ void initADPaint(){
 
   //Draw top bar
   myGLCD.setColor(255, 255, 255); //WHITE
+  myGLCD.setBackColor(0, 0, 0); //BLACK
   myGLCD.setFont(Retro8x16);
   myGLCD.print("ADPaint", CENTER, 5);
   myGLCD.fillRoundRect(myGLCD.getDisplayXSize() - 65, 1, myGLCD.getDisplayXSize() - 16, 23);
