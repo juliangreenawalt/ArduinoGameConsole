@@ -59,37 +59,15 @@ void initHomeScreen(){
   changeSelection();
 
   //TEMPORARY - Icons 50 X 50
+
   //Ping
-  myGLCD.setColor(0, 0, 0); //BLACK
-  myGLCD.fillRect(26, 90, 76, 140);
-  myGLCD.setColor(255, 255, 255); //WHITE
-  myGLCD.fillRect(37, 125, 65, 130);
-  myGLCD.drawLine(30, 103, 51, 124);
-  myGLCD.drawLine(51, 124, 65, 112);
-  myGLCD.fillCircle(65, 112, 5);
-  myGLCD.setFont(TRONFont);
-  myGLCD.setBackColor(0, 0, 0); //BLACK
-  myGLCD.print("Ping", 35, 92);
+  drawPingIcon(26, 90);
   //ADPaint
-  myGLCD.setColor(0, 0, 0); //BLACK
-  myGLCD.fillRect(135, 90, 185, 140);
-  myGLCD.setColor(255, 0, 0); //RED
-  myGLCD.fillRect(135, 125, 151, 140);
-  myGLCD.setColor(0, 255, 0); //GREEN
-  myGLCD.fillRect(152, 125, 168, 140);
-  myGLCD.setColor(0, 0, 255); //BLUE
-  myGLCD.fillRect(169, 125, 185, 140);
-  myGLCD.setColor(255, 255, 255); //WHITE
-  myGLCD.setFont(SmallFont);
-  myGLCD.print("Paint", 142, 100);
+  drawADPaintIcon(135, 90);
   //Input Test
-  myGLCD.setColor(255, 105, 180); //HOT PINK
-  myGLCD.fillRect(244, 90, 294, 140);
-  myGLCD.setColor(0, 0, 0); //BLACK
-  myGLCD.fillRect(247, 93, 291, 137);
-  myGLCD.setColor(255, 105, 180); //HOT PINK
-  myGLCD.print("Input", 250, 100);
-  myGLCD.print("Test", 254, 115);
+  drawInputTestIcon(244, 90);
+  //Flappy Nerd
+  drawFlappyNerdIcon(26, 160);
 }
 
 void updateHomeScreen(){
@@ -189,6 +167,69 @@ void changeSelection(){
     myGLCD.drawLine(230, 110, 237, 115);
     myGLCD.drawLine(230, 120, 237, 115);
   }
+}
+
+void drawPingIcon(int x, int y){
+  myGLCD.setColor(0, 0, 0); //BLACK
+  myGLCD.fillRect(x, y, x + 50, y + 50);
+  myGLCD.setColor(255, 255, 255); //WHITE
+  myGLCD.fillRect(x + 11, y + 35, x + 39, y + 40);
+  myGLCD.drawLine(x + 4, y + 13, x + 25, y + 34);
+  myGLCD.drawLine(x + 25, y + 34, x + 39, y + 22);
+  myGLCD.fillCircle(x + 39, y + 22, 5);
+  myGLCD.setFont(TRONFont);
+  myGLCD.setBackColor(0, 0, 0); //BLACK
+  myGLCD.print("Ping", x + 9, y + 2);
+}
+
+void drawADPaintIcon(int x, int y){
+  myGLCD.setColor(0, 0, 0); //BLACK
+  myGLCD.fillRect(x, y, x + 50, y + 50);
+  myGLCD.setColor(255, 0, 0); //RED
+  myGLCD.fillRect(x, y + 35, x + 16, y + 50);
+  myGLCD.setColor(0, 255, 0); //GREEN
+  myGLCD.fillRect(x + 17, y + 35, x + 33, y + 50);
+  myGLCD.setColor(0, 0, 255); //BLUE
+  myGLCD.fillRect(x + 34, y + 35, x + 50, y + 50);
+  myGLCD.setColor(255, 255, 255); //WHITE
+  myGLCD.setFont(SmallFont);
+  myGLCD.print("Paint", x + 7, y + 10);
+}
+
+void drawInputTestIcon(int x, int y){
+  myGLCD.setColor(255, 105, 180); //HOT PINK
+  myGLCD.fillRect(x, y, x + 50, y + 50);
+  myGLCD.setColor(0, 0, 0); //BLACK
+  myGLCD.fillRect(x + 3, y + 3, x + 47, y + 47);
+  myGLCD.setColor(255, 105, 180); //HOT PINK
+  myGLCD.setFont(SmallFont);
+  myGLCD.print("Input", x + 6, y + 10);
+  myGLCD.print("Test", x + 10, y + 25);
+}
+
+void drawFlappyNerdIcon(int x, int y){
+  myGLCD.setColor(210, 180, 140); //TAN
+  myGLCD.fillRect(26, 160, 76, 210);
+  myGLCD.setColor(101, 67, 33); //DARK BROWN
+  myGLCD.fillRect(26, 160, x + 50, y + 10);
+  myGLCD.setColor(0, 0, 0); //BLACK
+  myGLCD.fillCircle(x + 14, y + 22, 10);
+  myGLCD.fillCircle(x + 36, y + 22, 10);
+  myGLCD.drawLine(x + 14, y + 22, x + 36, y + 22);
+  myGLCD.drawLine(x, y + 18, x + 4, y + 20);
+  myGLCD.drawLine(x + 50, y + 18, x + 46, y + 20);
+  myGLCD.drawLine(x + 14, y + 38, x + 36, y + 38);
+  myGLCD.fillRect(x + 19, y + 38, x + 31, y + 45);
+  myGLCD.setColor(255, 255, 255); //WHITE
+  myGLCD.fillCircle(x + 14, y + 22, 8);
+  myGLCD.fillCircle(x + 36, y + 22, 8);
+  myGLCD.fillRect(x + 20, y + 39, x + 24, y + 44);
+  myGLCD.fillRect(x + 26, y + 39, x + 30, y + 44);
+  myGLCD.setColor(0, 0, 0); //BLACK
+  myGLCD.setBackColor(255, 255, 255); //WHITE
+  myGLCD.setFont(SmallFont);
+  myGLCD.print("F", x + 12, y + 17);
+  myGLCD.print("N", x + 34, y + 17);
 }
 
 void launch(int id){

@@ -1,19 +1,19 @@
 //All functions specific to Flappy Board go here
 
-void playFlappyBoard(){
+void playFlappyNerd(){
   bool playing = true;
   
-  initFlappyBoard();
+  initFlappyNerd();
   
   while(playing){
     readInputs();
   }
 }
 
-void initFlappyBoard(){
+void initFlappyNerd(){
   
   Serial.println("-------------------------");
-  Serial.println("Welcome to Flappy Board");
+  Serial.println("Welcome to Flappy Nerd");
   Serial.println("-------------------------");
   
   myGLCD.clrScr();
