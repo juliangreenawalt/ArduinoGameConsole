@@ -1,6 +1,6 @@
 //All functions specific to Input Test go here
 
-void playInputTest(){
+void openInputTest(){
   bool playing = true;
   
   initInputTest();
