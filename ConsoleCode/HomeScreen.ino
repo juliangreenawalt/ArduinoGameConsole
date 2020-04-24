@@ -305,9 +305,9 @@ void drawInputTestIcon(int x, int y){
 
 void drawFlappyNerdIcon(int x, int y){
   myGLCD.setColor(210, 180, 140); //TAN
-  myGLCD.fillRect(26, 160, 76, 210);
+  myGLCD.fillRect(x, y, x + 50, y + 50);
   myGLCD.setColor(101, 67, 33); //DARK BROWN
-  myGLCD.fillRect(26, 160, x + 50, y + 10);
+  myGLCD.fillRect(x, y, x + 50, y + 10);
   myGLCD.setColor(0, 0, 0); //BLACK
   myGLCD.fillCircle(x + 14, y + 22, 10);
   myGLCD.fillCircle(x + 36, y + 22, 10);
