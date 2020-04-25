@@ -26,27 +26,23 @@ void initFlappyNerd(){
 
 void drawFlappyNerd(int x, int y){
   myGLCD.setColor(210, 180, 140); //TAN
-  myGLCD.fillRect(x, y, x + 50, y + 50);
+  myGLCD.fillRect(x, y, x + 30, y + 30);
   myGLCD.setColor(101, 67, 33); //DARK BROWN
-  myGLCD.fillRect(x, y, x + 50, y + 10);
+  myGLCD.fillRect(x, y, x + 30, y + 6);
   myGLCD.setColor(0, 0, 0); //BLACK
-  myGLCD.fillCircle(x + 14, y + 22, 10);
-  myGLCD.fillCircle(x + 36, y + 22, 10);
-  myGLCD.drawLine(x + 14, y + 22, x + 36, y + 22);
-  myGLCD.drawLine(x, y + 18, x + 4, y + 20);
-  myGLCD.drawLine(x + 50, y + 18, x + 46, y + 20);
-  myGLCD.drawLine(x + 14, y + 38, x + 36, y + 38);
-  myGLCD.fillRect(x + 19, y + 38, x + 31, y + 45);
+  myGLCD.fillCircle(x + 8, y + 13, 6);
+  myGLCD.fillCircle(x + 22, y + 13, 6);
+  myGLCD.drawLine(x + 14, y + 13, x + 18, y + 13);
+  myGLCD.drawLine(x, y + 10, x + 4, y + 12);
+  myGLCD.drawLine(x + 30, y + 10, x + 28, y + 12);
+  myGLCD.drawLine(x + 8, y + 22, x + 22, y + 22);
+  myGLCD.fillRect(x + 11, y + 22, x + 20, y + 27);
+  myGLCD.setColor(192, 192, 192); //SILVER
+  myGLCD.fillCircle(x + 8, y + 13, 5);
+  myGLCD.fillCircle(x + 22, y + 13, 5);
   myGLCD.setColor(255, 255, 255); //WHITE
-  myGLCD.fillCircle(x + 14, y + 22, 8);
-  myGLCD.fillCircle(x + 36, y + 22, 8);
-  myGLCD.fillRect(x + 20, y + 39, x + 24, y + 44);
-  myGLCD.fillRect(x + 26, y + 39, x + 30, y + 44);
-  myGLCD.setColor(0, 0, 0); //BLACK
-  myGLCD.setBackColor(255, 255, 255); //WHITE
-  myGLCD.setFont(SmallFont);
-  myGLCD.print("F", x + 12, y + 17);
-  myGLCD.print("N", x + 34, y + 17);
+  myGLCD.fillRect(x + 12, y + 23, x + 14, y + 26);
+  myGLCD.fillRect(x + 16, y + 23, x + 19, y + 26);
 }
 
 void drawPillar(int x, int y){
